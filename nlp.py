@@ -23,6 +23,7 @@ sno = nltk.stem.SnowballStemmer('english')
 vectorizer = CountVectorizer(min_df=1, stop_words= "english")
 analyze = vectorizer.build_analyzer()
 transformer = TfidfTransformer(smooth_idf=False)
+# testing 
 
 CHRISTELLE_FILE = "ResponseTimeStudyCHRISTELLE_Sheet1.tsv"
 JOE_FILE = "ResponseTimeStudyJOE_Sheet1.tsv"
