@@ -58,6 +58,7 @@ clean_data <- function(joe.df, christelle.df){
 	}
 	
 	# Getting month
+	combined.df <- na.omit(combined.df)
 	dateSplit.ls <- strsplit(combined.df$Date.Time," ")
 	month.ls <- sapply(dateSplit.ls,function(x) x[[1]][1])
 	combined.df$month <- month.ls
@@ -87,9 +88,9 @@ plot_data <- function(df, plot = 'month'){
 	# density plot by month
 	density_plot_month <- ggplot(df[which(df$diff < 180),], aes(x = diff, fill = Name)) 
 							+ geom_density(alpha = 0.5) 
-							+ labs(title = "SMS Response Time : Jan-Novemeber 2015",x="Mins",y="Density")
-	month_plot <- density_plot_month + facet_grid(. ~ month)
-	lol_plot <- density_plot_month + facet_grid(lol ~ month)
+							+ labs(title = "SMS Response Time : Jan-December 2015",x="Mins",y="Density")
+	month_plot <- density_plot_month + facet_grid(. ~ month) + theme(legend.position="top", axis.text.x = element_text(angle = 60, hjust = 1))
+	lol_plot <- density_plot_month + facet_grid(lol ~ month) + theme(legend.position="top", axis.text.x = element_text(angle = 60, hjust = 1))
 
 	if (plot == 'month'){
 		return(month_plot)
